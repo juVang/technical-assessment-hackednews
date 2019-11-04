@@ -5,10 +5,10 @@ var router = express.Router();
 
 router.route("/").get(function(req, res) {
   // TODO: Replace this with stories you've retrieved from the database
-  res.json(
+  res.send(
     storyController.findAll(function(err, res) {
       if (err) {
-        console.log("nothing fined");
+        console.log("nothing found");
       } else {
         console.log("Found");
       }
@@ -18,7 +18,7 @@ router.route("/").get(function(req, res) {
 
 // Here we use express's route params
 router.route("/:id").get(function(req, res) {
-  res.json(
+  res.send(
     storyController.findOne(req.id, function(err, res) {
       if (err) {
         console.log("nothing fined");

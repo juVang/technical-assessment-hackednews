@@ -5,7 +5,7 @@ var Stories = require("./db/models/story.js");
 mongoose.connect("mongodb://localhost/hackednews");
 
 var seedDb = function(data) {
-  console.log(data);
+  console.log(data.length);
   // your code here!
   for (var i = 0; i < data.length; i++) {
     Stories.insertOne(

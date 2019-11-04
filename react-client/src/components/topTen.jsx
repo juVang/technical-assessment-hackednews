@@ -1,12 +1,16 @@
 import React from "react";
-import { data } from "./dummy_data";
+// import { data } from "./dummy_data";
 // Build out the view for the top ten HackerNews stories here.
 // Each story should have a title, author, and score.
 // You may wish to refactor the existing component structure - that's fine.
 class TopTen extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: this.props.data
+    };
   }
+
   render() {
     return (
       <div>
@@ -21,7 +25,7 @@ class TopTen extends React.Component {
           </thead>
           <tbody>
             <tr>
-              {data.map(item => (
+              {this.state.data.map(item => (
                 <div>
                   <td>{item.title}</td>
                   <td>{item.id}</td>
