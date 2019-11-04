@@ -33,8 +33,8 @@ To implement this user story, you should:
   * Start your application with the command `npm start`.
 * If using React:
   * Use the existing code in the `react-client` directory and the dummy data to build the `topTen` view in `react-client/src/components/topTen.jsx`. You may also need to modify `react-client/src/index.jsx`.
-  * Start your application with two commands `npm start` and `npm run dev-react` in two separate terminal tabs. For more information about webpack, read the comments in `webpack.config.js` or take a look at [the Webpack Docs](https://webpack.github.io/docs/). -->
-* Write a script that would add the dummy data to your database when `npm run seed-database` is run from the command line. Check out the `package.json` file to see what this command does. When you have this working, run the command so that your database is populated.
+  * Start your application with two commands `npm start` and `npm run dev-react` in two separate terminal tabs. For more information about webpack, read the comments in `webpack.config.js` or take a look at [the Webpack Docs](https://webpack.github.io/docs/). 
+* Write a script that would add the dummy data to your database when `npm run seed-database` is run from the command line. Check out the `package.json` file to see what this command does. When you have this working, run the command so that your database is populated. -->
 * Complete the route `/api/stories` in `server/routers/story.js` so that requests to this route are responded to with the data for the top ten stories, retrieved from the database.
 * Once you have your front end views working with the dummy data, refactor your front end to retrieve  seed data from the server rather than using the dummy data in the client side files.
 * **WHEN COMPLETE AND WORKING, make a commit that says `Part 1 Complete`**
