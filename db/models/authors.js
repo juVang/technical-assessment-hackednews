@@ -13,7 +13,9 @@ var authorSchema = mongoose.Schema({
 var AuthorModel = mongoose.model("Author", authorSchema);
 
 function findAll(callback) {
-  AuthorModel.find({}, callback);
+  AuthorModel.find({})
+    .sort({ karma: -1 })
+    .exec(callback);
 }
 
 function findOne(id, callback) {

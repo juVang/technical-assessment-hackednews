@@ -37,9 +37,9 @@ export default class App extends React.Component {
         <button onClick={this.changeView.bind(this)}>Top Ten Stories</button>
         <button onClick={this.changeView.bind(this)}>Top Ten Authors</button>
         {this.state.showAuth ? (
-          <TopTenAuthors data={this.state.authors} />
+          <TopTenAuthors data={this.state.authors.slice(0, 10)} />
         ) : (
-          <TopTenStories data={this.state.news} />
+          <TopTenStories data={this.state.news.slice(0, 10)} />
         )}
       </div>
     );
