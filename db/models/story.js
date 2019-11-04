@@ -15,7 +15,7 @@ var storySchema = mongoose.Schema({
     type: Number,
     unique: true
   },
-  by: String,
+  by: authorSchema,
   title: String,
   score: Number
 });

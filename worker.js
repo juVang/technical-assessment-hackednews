@@ -34,25 +34,48 @@ var saveToDb = function (data) {
 
   for (var i = 0; i < data.length; i++) {
     getItemFromHackerNewsById(data[i], function (err, result) {
-      var story = {
-        id: result['id'],
-        by: result['by'],
-        title: result['title'],
-        score: result['score']
-      }
-      db.insertOne([story], function (err, result) {
+      getUserFromHackerNewsById(result['by'], function (err, user) {
         if (err) {
           console.log(err);
         } else {
-          console.log('story saved');
+          var story = {
+            id: result['id'],
+            by: user,
+            title: result['title'],
+            score: result['score']
+          }
+          db.insertOne([story], function (err, result) {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log('story saved');
+            }
+          });
         }
       });
+
     });
 
   }
 
 
 };
+var getUserFromHackerNewsById = function (id, callback) {
+  var url = "https://hacker-news.firebaseio.com/v0/user/" + id + ".json";
+  request.get(url, function (err, response, body) {
+    var data = null;
+    if (err) {
+      callback(err, null);
+    } else if (!isJSONResponse(response.headers)) {
+      callback(new Error('Response did not contain JSON data.'), null);
+    } else {
+
+      data = JSON.parse(body);
+
+      callback(null, data);
+    }
+  });
+}
 var getItemFromHackerNewsById = function (id, callback) {
   var url = "https://hacker-news.firebaseio.com/v0/item/" + id + ".json"
   request.get(url, function (err, response, body) {
@@ -64,7 +87,7 @@ var getItemFromHackerNewsById = function (id, callback) {
     } else {
 
       data = JSON.parse(body);
-      console.log(data);
+
       callback(null, data);
     }
   });
@@ -75,7 +98,6 @@ getJSONFromHackerNews(topStoriesURL, function (err, data) {
   } else {
     // save to database
     var topTen = data.slice(0, 10);
-    console.log(topTen);
     saveToDb(topTen);
   }
 });
