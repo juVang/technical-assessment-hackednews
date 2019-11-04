@@ -4,14 +4,14 @@ import React from 'react';
 // Each story should have a title, author, and score. 
 // You may wish to refactor the existing component structure - that's fine.
 var TopTen = (props) => {
-  function whenclicked(id) {
-    alert('clicked')
-    props.whenItemClicked(id);
+  function whenclicked(e) {
+    alert('clicked', e.target.key);
+    props.whenItemClicked(e.target.key);
   }
   props.TenStoreis();
 
   var storeis = props.data.map(story => {
-    return (<tr key={story.id} >
+    return (<tr key={story.id} onClick={whenclicked}>
       <td >{story.title}</td>
       <td>{story.by.id}</td>
       <td>{story.score}</td>
