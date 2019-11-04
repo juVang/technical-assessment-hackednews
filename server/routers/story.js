@@ -15,6 +15,17 @@ router.route('/')
 
   });
 
+router.route('/authors')
+  .get(function (req, res) {
+    storyController.findTopTenAuthors(function (err, authors) {
+      if (err) {
+        console.log(err);
+      }
+      res.json(authors);
+    })
+
+  });
+
 // Here we use express's route params
 router.route('/:id')
   .get(function (req, res) { });

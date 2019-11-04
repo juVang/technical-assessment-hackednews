@@ -10,7 +10,7 @@ var seedDb = function (data) {
 
     var story = {
       id: data[i]['id'],
-      by: data[i]['by']['id'],
+      by: data[i]['by'],
       title: data[i]['title'],
       score: data[i]['score']
     }
