@@ -1,34 +1,35 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/story", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/workrs", { useNewUrlParser: true });
 
-var storySchema = mongoose.Schema({
-  id: {
-    type: Number,
-    unique: true
+var workerSchema = mongoose.Schema({
+  topStories: {
+    id: { type: Number, unique: true },
+    by: { type: String },
+    title: { type: Number },
+    score: { type: Number }
   },
-  by: { type: String },
-  title: { type: String },
-  score: { type: Number }
+  topAuthors: {
+    id: {
+      type: Number,
+      unique: true
+    }
+  },
+  karma: { type: Number },
+  about: { type: Number }
 });
 
-var authorsSchema = mongoose.Schema({
-  id: { String, unique: true },
-  karma: Number,
-  about: String
-});
-
-var AuthorsModel = mongoose.model("AuthorsModel", authorsSchema);
+var WorkerModel = mongoose.model("WorkerModel", workerSchema);
 let save = data => {
   for (i = 0; i < data.length; i++) {
     var by = data.by;
     var title = data.title;
     var score = data.score;
-    let schemaa = new storySchema({
+    let schemaa1 = new storySchema({
       by: data[i].by,
       title: data[i].title,
       score: data[i].score
     });
-    schemaa.save();
+    schemaa1.save();
   }
 };
 
@@ -52,4 +53,3 @@ exports.findAll = findAll;
 exports.insertOne = insertOne;
 exports.StoryModel = StoryModel;
 module.exports.save = save;
-exports.AuthorsModel = AuthorsModel;
