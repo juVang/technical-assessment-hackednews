@@ -8,6 +8,7 @@ import React from 'react';
 
 
 class TopTen extends React.Component {
+
   render() {
     return (
       <div>
@@ -22,50 +23,22 @@ class TopTen extends React.Component {
         </thead>
         <tbody>
           <tr>
-            <td>Switch – New Video Game System [video]</td>
-            <td>ocdtrekkie</td>
-            <td>536</td>
+            <td>{this.props.stories[0]['title']}</td>
+            <td>{this.props.stories[0]['by']['id']}</td>
+            <td>{this.props.stories[0]['score']}</td>
           </tr>
           <tr>
-            <td>Video Games Are Changing the Way Soccer Is Played</td>
-            <td>mhb</td>
-            <td>100</td>
+            <td>{this.props.stories[1]['title']}</td>
+            <td>{this.props.stories[1]['by']['id']}</td>
+            <td>{this.props.stories[1]['score']}</td>
           </tr>
         </tbody>
       </table>
-      {/* <h1>{this.props.stories[0]['by']}</h1> */}
     </div>
     )
 }
 }
 
-// const TopTen = (props) => (
-//   <div>
-//   <h1> Top Ten Stories </h1>
-//   <table>
-//     <thead>
-//       <tr>
-//         <th>Title</th>
-//         <th>Author</th>
-//         <th>Score</th>
-//       </tr>
-//     </thead>
-//     <tbody>
-//       <tr>
-//         <td>Switch – New Video Game System [video]</td>
-//         <td>ocdtrekkie</td>
-//         <td>536</td>
-//       </tr>
-//       <tr>
-//         <td>Video Games Are Changing the Way Soccer Is Played</td>
-//         <td>mhb</td>
-//         <td>100</td>
-//       </tr>
-//     </tbody>
-//   </table>
-//   <h1>{stories}</h1>
-// </div>
-// );
 
 
 

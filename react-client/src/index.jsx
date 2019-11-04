@@ -9,7 +9,7 @@ const data = require('../dummy_data.js')
 
 class App extends React.Component {
     render() {
-      return <TopTen />;
+      return <TopTen stories = {data}/>;
     }
   }
 
