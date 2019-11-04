@@ -4,8 +4,9 @@ var storyRouter = require('./routers/story.js');
 var mongoose = require('mongoose');
 var app = express();
 mongoose.connect('mongodb://localhost/hackednews');
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 // UNCOMMENT FOR REACT
 app.use(express.static(__dirname + '/../react-client/dist'));
 
@@ -15,14 +16,18 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.use('/api/story', storyRouter);
 
-app.get('/', function(req,res){
-  db.(req.body)
-  res.send()
+router.get('/api/story', (req, res) => {
+  Data.find((err, data) => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true, data: data });
+  });
 });
-app.post('/',function(req,res){
-  db.find()
-  callbacke(null,results)
-})
+router.post('/api/story', (req, res) => {
+  Data.find((err, data) => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true, data: data });
+  });
+});
 app.listen(8000, function() {
   console.log('listening on port 8000');
 });
