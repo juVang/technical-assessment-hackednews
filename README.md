@@ -9,10 +9,13 @@
 You will be creating a full-stack application to display analytics about [HackerNews](https://news.ycombinator.com/) and its users. In order to do this you will be interacting with the [HackerNews API](https://github.com/HackerNews/API) using a worker process, and storing data from your calls to the API in MongoDB, using the [Mongoose ODM](http://mongoosejs.com/). Your front end will display views created from data in the database. You will have the choice of using either [AngularJS](https://angularjs.org/) or [ReactJS](https://facebook.github.io/react/), and will serve your application with a [NodeJS](https://nodejs.org/) web server, using [ExpressJS](https://expressjs.com/).
 
 NAME WHICH FRONT END FRAMEWORK YOU WILL BE USING FOR THE ASSESSMENT HERE:
-* *[AngularJS or ReactJS]*:
+*  ReactJS
 
 HOW TO START THIS APP
-* *[Modify this section to tell graders how to start your app]*
+1- Install all npm needed packages according to package.json
+2- Start the Server and webpack and make sure they work properly and explore the server file/s.
+3- Explore the database file and make sure there is a connection to a working database provider.
+4- work on the assessment prompts
 
 By design, this assessment contains more work than you will be able to complete in a day, so don't be concerned about not completing all of the features below. Rather, please work on the following features **in order**, moving on to the next feature only after the one you are working on is complete. **Please commit WORKING code early and often**. In addition, after each step, please follow the guidelines for a commit message.
 
