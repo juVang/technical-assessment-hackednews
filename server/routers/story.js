@@ -1,5 +1,6 @@
 var express = require('express');
 var db = require('../../db/models/story.js');
+var workerAPI = require('../../worker.js');
 
 var router = express.Router();
 

@@ -30,7 +30,7 @@ function insertOne(story, callback) {
 }
 
 function findAuthors(callback) {
-  StoryModel.find().sort({karma}).limit(10, callback);
+  StoryModel.find().sort({karma}).limit(10).exec(callback);
 }
 
 function saveStory(story) {

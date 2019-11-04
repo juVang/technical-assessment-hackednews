@@ -19,6 +19,7 @@
     "jquery": "^3.1.1",
     "mongoose": "^4.6.4",
     "mongoose-data-seed": "^2.1.4",
+    "node-fetch": "^2.6.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "request": "^2.75.0"

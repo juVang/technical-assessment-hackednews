@@ -32,5 +32,10 @@ var getJSONFromHackerNews = function (url, callback) {
 getJSONFromHackerNews(topStoriesURL, function(err, data) {
   console.log(err, 'err, expect to be null');
   console.log(data, 'data, expect to be ids for top 500 stories');
+  for(d in data){
+    storyUrl='https://hacker-news.firebaseio.com/v0/item/'+ data[d] +'.json?print=pretty';
+    authorUrl = 'https://hacker-news.firebaseio.com/v0/user/'+ data[d] + '.json?print=pretty';
+    console.log('url: ', storyUrl);
+  }
   mongoose.disconnect();
 });
