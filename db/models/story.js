@@ -7,7 +7,9 @@ var storySchema = mongoose.Schema({
   },
   by: String,
   title: String,
-  score: Number
+  score: Number,
+  karma: Number,
+  about: String
 });
 
 var StoryModel = mongoose.model("Story", storySchema);

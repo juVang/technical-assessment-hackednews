@@ -7,10 +7,21 @@ var router = express.Router();
 
 router.route("/").get(function(req, res) {
   // TODO: Replace this with stories you've retrieved from the database
-  // list.sort((a, b) => (a.color < b.color) ? 1 : -1)
   var topTen;
   storyModel.find({}, function(err, result) {
     result.sort((a, b) => (a.score < b.score ? 1 : -1));
+    topTen = result.slice(0, 10);
+    //Test
+    console.log(topTen);
+    res.json(topTen);
+    res.end(topTen);
+  });
+});
+
+router.route("/author").get(function(req, res) {
+  var topTen;
+  storyModel.find({}, function(err, result) {
+    result.sort((a, b) => (a.karma > b.karma ? 1 : -1));
     topTen = result.slice(0, 10);
     //Test
     console.log(topTen);

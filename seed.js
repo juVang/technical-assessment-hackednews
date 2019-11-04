@@ -3,6 +3,10 @@ var mongoose = require("mongoose");
 var Stories = require("./db/models/story.js");
 
 mongoose.connect("mongodb://localhost/hackednews");
+// mongoose.connect("mongodb://localhost/hackednews", function() {
+//   /* Drop the DB */
+//   mongoose.connection.db.dropDatabase();
+// });
 
 // my model
 var newStory = Stories.StoryModel;
@@ -15,7 +19,9 @@ var seedDb = function(data) {
       id: e.id,
       by: e.by.id,
       title: e.title,
-      score: e.score
+      score: e.score,
+      karma: e.by.karma,
+      about: e.by.about
     });
     newRow.save(function(err, result) {
       if (err) {
