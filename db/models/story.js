@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 var storySchema = mongoose.Schema({
   id: {
@@ -10,7 +10,7 @@ var storySchema = mongoose.Schema({
   score: Number
 });
 
-var StoryModel = mongoose.model('Story', storySchema);
+var StoryModel = mongoose.model("Story", storySchema);
 
 // findAll retrieves all stories
 function findAll(callback) {
@@ -19,7 +19,7 @@ function findAll(callback) {
 
 // findOne will retrieve the story associated with the given id
 function findOne(id, callback) {
-  StoryModel.find({id: id}, callback);
+  StoryModel.find({ id: id }, callback);
 }
 
 // insertOne inserts a story into the db
@@ -30,4 +30,4 @@ function insertOne(story, callback) {
 exports.findOne = findOne;
 exports.findAll = findAll;
 exports.insertOne = insertOne;
-
+exports.StoryModel = StoryModel;
