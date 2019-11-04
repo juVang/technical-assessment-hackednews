@@ -1,6 +1,5 @@
 import React from 'react';
 import $ from 'jquery';
-//const Search = (props) => (
 class Search extends React.Component {
     constructor(props) {
         super(props);
