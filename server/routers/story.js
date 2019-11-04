@@ -1,5 +1,5 @@
 var express = require('express');
-var storyController = require('../../db/controllers/story.js');
+var storyController = require('../../db/models/story.js');
 
 var router = express.Router();
 

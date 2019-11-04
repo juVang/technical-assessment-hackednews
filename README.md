@@ -10,6 +10,7 @@ You will be creating a full-stack application to display analytics about [Hacker
 
 NAME WHICH FRONT END FRAMEWORK YOU WILL BE USING FOR THE ASSESSMENT HERE:
 * *[AngularJS or ReactJS]*:
+ReactJS
 
 HOW TO START THIS APP
 * *[Modify this section to tell graders how to start your app]*
