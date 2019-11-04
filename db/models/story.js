@@ -17,7 +17,8 @@ var storySchema = mongoose.Schema({
   },
   by: authorSchema,
   title: String,
-  score: Number
+  score: Number,
+  descendants: Number
 });
 
 var StoryModel = mongoose.model('Story', storySchema);
@@ -57,9 +58,21 @@ function insertOne(story, callback) {
   StoryModel.create(story, callback);
 }
 
+function searchStories(query, callback) {
+  // try this
+  StoryModel.find({ 'by.id': query }).exec(function (err, stories) {
+    if (err) {
+      callback(err, null);
+    }
+
+    callback(null, stories);
+  });
+}
 exports.findOne = findOne;
 exports.findAll = findAll;
 exports.insertOne = insertOne;
 exports.findTopTen = findTopTen;
 exports.findTopTenAuthors = findTopTenAuthors;
+exports.searchStories = searchStories;
+
 
