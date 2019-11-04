@@ -86,6 +86,13 @@ class App extends React.Component {
         >
           Search
         </button>
+        <button
+          className="tablink"
+          name="RECOMM"
+          onClick={this.handleTabClick.bind(this)}
+        >
+          Recommended Stories
+        </button>
         <br></br>
         <TopTen
           authors={this.state.authors}

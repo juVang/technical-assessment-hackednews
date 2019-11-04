@@ -61,7 +61,8 @@ var saveDb = function(stories, authors) {
             id: stories.id,
             by: stories.by,
             title: stories.title,
-            score: stories.score
+            score: stories.score,
+            kids: stories.kids
         };
         Stories.insertOne(obj, function(err, res) {
             console.log(err);

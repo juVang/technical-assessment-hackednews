@@ -48,6 +48,18 @@ router.route("/stories/user").post(function(req, res) {
         res.json(result);
     });
 });
+
+router.route("/api/remonded").post(function(req, res) {
+    var child = req.body.kids;
+    // if (req.body.kids.length > 0) {
+    //     child = req.body.kids;
+    // }
+    // console.log(child);
+    storyController.findTopCommentorsRelated(child, function(result) {
+        res.json(result);
+    });
+});
+
 // router.route("/save").get(function(req, res) {
 //     //     var data = dummyData;
 //     //     // console.log(data[0]);

@@ -7,7 +7,8 @@ var storySchema = mongoose.Schema({
     },
     by: String,
     title: String,
-    score: Number
+    score: Number,
+    kids: [Number]
 });
 
 var authorSchema = mongoose.Schema({
@@ -30,7 +31,7 @@ function findAll(callback) {
 function findTopTen(callback) {
     StoryModel.find({})
         .sort([
-            ["score", -1]
+            ["id", -1]
         ])
         .limit(10)
         .exec(callback);
@@ -43,6 +44,18 @@ function findTopTenAuthors(callback) {
         ])
         .limit(10)
         .exec(callback);
+}
+
+function findTopCommentorsRelated(kids, callback) {
+    StoryModel.aggregate([{ $match: { kids: { $in: [kids] } } }], function(
+        err,
+        res
+    ) {
+        console.log(err);
+        callback(res);
+        // console.log(err, res);
+    });
+    callback([]);
 }
 
 // findOne will retrieve the story associated with the given id
@@ -69,3 +82,4 @@ exports.findTopTen = findTopTen;
 exports.findTopTenAuthors = findTopTenAuthors;
 exports.insertOneAuthor = insertOneAuthor;
 exports.findByAuthor = findByAuthor;
+exports.findTopCommentorsRelated = findTopCommentorsRelated;
