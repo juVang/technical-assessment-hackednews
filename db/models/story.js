@@ -1,4 +1,12 @@
 var mongoose = require('mongoose');
+var db = mongoose.createConnection('mongodb://localhost/test');
+// mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
+// var db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'connection error:'));
+    console.log('connection error')
+    db.once('open',function(){
+        console.log('we are connected')
+    })
 
 var storySchema = mongoose.Schema({
   id: {
