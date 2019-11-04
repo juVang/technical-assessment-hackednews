@@ -8,15 +8,15 @@ mongoose.connect('mongodb://localhost/hackednews');
 
 
 var storySchema = new mongoose.Schema({
-  aboutAuthor: String,
+  //aboutAuthor: String,
   // created: Number,
   authorId: String,
-  karma: Number
+  //karma: Number
   // descendants: Number,
   // storyId: Number,
-  // title: String,
+  title: String,
   // type: String,
-  // score: Number,
+  score: Number
   // url: String
 })
 
@@ -26,15 +26,15 @@ var seedDb = function(data) {
   //console.log(data)
   for(var i = 0; i < data.length; i++) {
     var st = new Story ({
-      aboutAuthor: data[i]['by']['about'],
-      // created: data[i]['by']['created'],
-       authorId: data[i]['by']['id'],
-       karma: data[i]['by']['karma']
+      //aboutAuthor: data[i]['by']['about'],
+      //created: data[i]['by']['created'],
+      authorId: data[i]['by']['id'],
+      //karma: data[i]['by']['karma']
       // descendants: data[i]['descendants'],
       // storyId: data[i]['id'],
-      // title: data[i]['title'],
+      title: data[i]['title'],
       // type: data[i]['type'],
-      // score: data[i]['score'],
+      score: data[i]['score']
       // url: data[i]['url']
     })
     st.save();
