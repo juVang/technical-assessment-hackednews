@@ -1,4 +1,4 @@
-module.exports = [
+module.exports.hackednews = [
   {
     "by": {
       "about": "My name is Jim",

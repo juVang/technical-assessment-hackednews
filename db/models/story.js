@@ -9,8 +9,16 @@ var storySchema = mongoose.Schema({
   title: String,
   score: Number
 });
+var authorSchema = mongoose.Schema({
+  id: {
+    name: String;
+    karma: Number;
+    about: string
+  }
+})
 
 var StoryModel = mongoose.model('Story', storySchema);
+var authorSchema = mongoose.model('author', authorSchema);
 
 // findAll retrieves all stories
 function findAll(callback) {
