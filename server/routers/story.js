@@ -28,7 +28,6 @@ router.route("/api/stories").get((req, res)=> {
         res.json(result);
     });
 });
-
 router.route("/api/authors").get((req, res)=> {
     storyController.findTopTenAuthors(function(err, result) {
         if (err) {
@@ -37,7 +36,6 @@ router.route("/api/authors").get((req, res)=> {
         res.json(result);
     });
 });
-
 router.route("/stories/user").post((req, res)=> {
     var author = req.body.author;
     console.log(req.body);
@@ -52,3 +50,4 @@ router.route("/stories/user").post((req, res)=> {
 router.route("/:id").get((req, res)=>{});
 
 module.exports = router;
+//still NOT WORKING

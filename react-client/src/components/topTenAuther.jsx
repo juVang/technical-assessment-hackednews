@@ -12,12 +12,9 @@ class TopTenAuther extends Component{
     dat = [],
     }
   }
-  handelTen(){
+  handelTopTen(){
     this.setState ({dat : dat})
   }
-
-  
-
 render(){
     return (
         <div>
@@ -45,6 +42,6 @@ render(){
       );
 } 
 }
-
+//NOT WORKING
 ReactDOM.render(<TopTenAuther/>,document.getElementById('app'))
 export default TopTen;
