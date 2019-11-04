@@ -10,14 +10,15 @@ mongoose.connect('mongodb://localhost/hackednews');
 app.use(bodyParser.json());
 
 // UNCOMMENT FOR REACT
-// app.use(express.static(__dirname + '/../react-client/dist'));
+app.use(express.static(__dirname + '/../react-client/dist'));
 
 // UNCOMMENT FOR ANGULAR
 // app.use(express.static(__dirname + '/../angular-client'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
+
 app.use('/api/story', storyRouter);
 
 app.listen(8000, function() {
-  console.log('listening on port 8000');
+  console.log('Crying on port 8000');
 });
