@@ -30,4 +30,5 @@ function insertOne(story, callback) {
 exports.findOne = findOne;
 exports.findAll = findAll;
 exports.insertOne = insertOne;
+exports.StoryModel = StoryModel;
 
