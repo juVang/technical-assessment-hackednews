@@ -17,3 +17,25 @@ div {
 .tablink:hover {
     background-color: #777;
 }
+
+input[type=search] {
+    width: 250px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.submit {
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: inline;
+}

@@ -37,6 +37,17 @@ router.route("/api/authors").get(function(req, res) {
         res.json(result);
     });
 });
+
+router.route("/stories/user").post(function(req, res) {
+    var author = req.body.author;
+    console.log(req.body);
+    storyController.findByAuthor(author, function(err, result) {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+});
 // router.route("/save").get(function(req, res) {
 //     //     var data = dummyData;
 //     //     // console.log(data[0]);

@@ -1,4 +1,5 @@
 import React from "react";
+import Seacrh from "./seacrh.jsx";
 
 // Build out the view for the top ten HackerNews stories here.
 // Each story should have a title, author, and score.
@@ -37,7 +38,7 @@ class TopTen extends React.Component {
           </table>
         </div>
       );
-    } else {
+    } else if (this.props.page === "AUTHOR") {
       return (
         <div>
           <br></br>
@@ -62,6 +63,8 @@ class TopTen extends React.Component {
           </table>
         </div>
       );
+    } else if (this.props.page === "SEARCH") {
+      return <Seacrh></Seacrh>;
     }
   }
 }

@@ -8,6 +8,7 @@ var app = express();
 mongoose.connect("mongodb://localhost/hackednews");
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // UNCOMMENT FOR REACT
 app.use(express.static(__dirname + "/../react-client/dist"));

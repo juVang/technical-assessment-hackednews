@@ -50,6 +50,10 @@ function findOne(id, callback) {
     StoryModel.find({ id: id }, callback);
 }
 
+function findByAuthor(author, callback) {
+    StoryModel.find({ by: author }, callback);
+}
+
 // insertOne inserts a story into the db
 function insertOne(story, callback) {
     StoryModel.create(story, callback);
@@ -64,3 +68,4 @@ exports.insertOne = insertOne;
 exports.findTopTen = findTopTen;
 exports.findTopTenAuthors = findTopTenAuthors;
 exports.insertOneAuthor = insertOneAuthor;
+exports.findByAuthor = findByAuthor;
