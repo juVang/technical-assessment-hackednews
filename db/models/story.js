@@ -35,7 +35,7 @@ function findAll(callback) {
 function findOne(id, callback) {
   StoryModel.find({id: id}, callback);
 }
-
+//
 
 // insertOne inserts a story into the db
 function insertOne(story, callback) {

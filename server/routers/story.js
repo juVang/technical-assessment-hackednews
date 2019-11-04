@@ -29,9 +29,9 @@ router.route("/api/stories").get((req, res)=> {
     });
 });
 router.route("/api/authors").get((req, res)=> {
-    storyController.findTopTenAuthors(function(err, result) {
+    storyController.findTopTenAuthors((err, result)=> {
         if (err) {
-          throw err;
+        throw err;
         }
         res.json(result);
     });

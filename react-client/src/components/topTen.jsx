@@ -1,5 +1,5 @@
 import React from "react";
-import Seacrh from "./seacrh.jsx";
+// import Seacrh from "./seacrh.jsx";
 
 // Build out the view for the top ten HackerNews stories here.
 // Each story should have a title, author, and score.
@@ -7,9 +7,14 @@ import Seacrh from "./seacrh.jsx";
 class TopTen extends React.Component {
   constructor(props) {
     super(props);
-    const s = "STORY";
-    const a = "AUTHOR";
-    console.log(props);
+
+    // $.ajax({
+    //   url:'',
+    //   type:"GET",
+    //   data:data,
+    //   success:()=>{}
+    // })
+    
   }
   render() {
       return (
@@ -30,8 +35,7 @@ class TopTen extends React.Component {
                   <td>{fromdb.title}</td>
                   <td>{fromdb.by}</td>
                   <td>{fromdb.score}</td>
-                </tr>
-              ))}
+                </tr>))}
             </tbody>
           </table>
         </div>
