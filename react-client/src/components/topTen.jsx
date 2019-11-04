@@ -19,7 +19,7 @@ const TopTen = props => (
           return (
             <tr key={i}>
               <td>{e.title}</td>
-              <td>{e.by.id}</td>
+              <td>{e.by}</td>
               <td>{e.score}</td>
             </tr>
           );

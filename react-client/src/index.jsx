@@ -14,6 +14,7 @@ class App extends Component {
       data1: []
     };
   }
+
   componentDidMount() {
     fetch("http://localhost:1500/api/story")
       .then(response => response.json())
