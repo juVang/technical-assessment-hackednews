@@ -1,5 +1,13 @@
 var mongoose = require('mongoose');
+mongoose.connect('/localhost:8000/', {useNewUrlParser: true})
 
+const db = mongoose.connection;
+db.on('error',console.error.bind(console, "connection error"));
+db.once('open', function(callback){
+  console.log('db connection succeeded');
+});
+
+//module.exports=db;
 var storySchema = mongoose.Schema({
   id: {
     type: Number,
@@ -26,8 +34,7 @@ function findOne(id, callback) {
 function insertOne(story, callback) {
   StoryModel.create(story, callback);
 }
-
+module.exports.storySchema = storySchema;
 exports.findOne = findOne;
 exports.findAll = findAll;
 exports.insertOne = insertOne;
-

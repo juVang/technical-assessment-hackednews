@@ -16,7 +16,12 @@ router.route('/')
          author: 'mhb',
          title: 'Video Games Are Changing the Way Soccer Is Played',
          score: 100
-       }
+       },
+       {
+        author: 'Jim',
+        title: 'Prepack helps make JavaScript code more efficient',
+        score: 392
+      },
      ]);
   });
 
