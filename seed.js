@@ -6,6 +6,7 @@ mongoose.connect('mongodb://localhost/hackednews');
 
 var seedDb = function(data) {
   // your code here!
+  
 };
 
 seedDb(data);
