@@ -38,11 +38,20 @@ var seedDb = function(data) {
       // url: data[i]['url']
     })
     st.save();
+    
   }
-  
-  console.log('saved')
+  //read();
+  //console.log('saved')
   // your code here!
   //data.save();
 };
 
+
+// var read = function () {
+//   //Story.find({});
+//   console.log(Story.find({}))
+// }
+
+
+module.exports = Story;
 seedDb(data);
