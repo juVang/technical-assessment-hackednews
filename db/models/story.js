@@ -33,6 +33,10 @@ function findAuthors(callback) {
   StoryModel.find().sort({karma}).limit(10).exec(callback);
 }
 
+function findStoriesByAuthor(author) {
+  StoryModel.find({by:author}, callback);
+}
+
 function saveStory(story) {
   var id = story.id;
   var by = story.by.id;
@@ -54,4 +58,5 @@ exports.findAll = findAll;
 exports.insertOne = insertOne;
 exports.saveStory = saveStory;
 exports.findAuthors = findAuthors;
+exports.findStoriesByAuthor = findStoriesByAuthor;
 

@@ -1,6 +1,6 @@
 var express = require('express');
 var db = require('../../db/models/story.js');
-var workerAPI = require('../../worker.js');
+//var workerAPI = require('../../worker.js');
 
 var router = express.Router();
 
@@ -12,7 +12,7 @@ router.route('/')
           console.log("db fetching err", err);
         } else {
           res.json(result);
-          console.log("db data" ,result);
+          //console.log("db data" ,result);
         }
      });    
   });
@@ -20,5 +20,19 @@ router.route('/')
 // Here we use express's route params
 router.route('/:id')
   .get(function(req, res) {});
+
+router.route('/:author')
+  .get(function(req, res) {
+    var author = req.params.author;
+    console.log(author);
+    var authorStories = db.findStoriesByAuthor(author);
+  });
+
+  // router.route('/:author')
+  // .post(function(req, res) {
+  //   var author = req.body.name;
+  //   console.log(author);
+  //   var authorStories = db.findStoriesByAuthor(author);
+  // });
 
 module.exports = router;

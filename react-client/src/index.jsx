@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TopTen from './components/topTen.jsx';
 import Author from './components/authors.jsx';
+import Search from './components/search.jsx';
+
 import $ from 'jquery';
 
 
@@ -23,9 +25,7 @@ class App extends React.Component{
             dataType: 'json',
             data: that.state.stories,
             success: function(data){
-                console.log(data);
                 that.updateState(data);
-                console.log(that.state.stories);
             },
             error: function(err){
                 console.log("err", err);
@@ -41,7 +41,6 @@ class App extends React.Component{
             success: function(data){
                 console.log(data);
                 that.updateState(data);
-                console.log(that.state.stories);
             },
             error: function(err){
                 console.log("err", err);
@@ -56,6 +55,7 @@ class App extends React.Component{
             <div>
                 <TopTen tens={this.state.stories}/>
                 <Author authors={this.state.stories}/>
+                <Search/>
             </div>
         );
     }
