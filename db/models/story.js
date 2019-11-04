@@ -27,7 +27,21 @@ function insertOne(story, callback) {
   StoryModel.create(story, callback);
 }
 
+function saveStory(story) {
+  var id = story.id;
+  var by = story.by.id;
+  var title = story.title;
+  var score = story.score;
+  console.log(by);
+  var Story = new StoryModel({'id': id, 'by': by, 'title' : title, 'score' : score});
+  Story.save(function(err, myStory){
+    if(err) return console.log("err", err);
+    console.log(myStory, " saved to Stories Collection!!");
+  });
+}
+
 exports.findOne = findOne;
 exports.findAll = findAll;
 exports.insertOne = insertOne;
+exports.saveStory = saveStory;
 
