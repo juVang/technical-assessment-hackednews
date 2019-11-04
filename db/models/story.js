@@ -31,11 +31,10 @@ function findOne(id, callback) {
 
 // insertOne inserts a story into the db
 function insertOne(story) {
-  console.log("am in ");
   var mymodel = new StoryModel(story);
   mymodel.save((err, resul) => {
     if (err) {
-      console.log("err");
+      console.log("err", err);
     } else {
       console.log("don");
     }

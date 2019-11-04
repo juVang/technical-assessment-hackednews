@@ -4,6 +4,8 @@ var storyRouter = require("./routers/story.js");
 var mongoose = require("mongoose");
 var data = require("../react-client/dummy_data");
 var data2 = require("../seed_data");
+var worker = require("../worker");
+var storyModel = require("../db/models/story");
 
 var app = express();
 
@@ -19,7 +21,18 @@ app.use(express.static(__dirname + "/../react-client/dist"));
 
 //app.use("/api/story", storyRouter);
 app.get("/stories", (req, res) => {
-  res.send({ data: data2 });
+  //worker.getLinks();
+  storyModel.findAll(function(err, data) {
+    if (err) {
+      console.log("error");
+      console.log(err);
+      res.send({ data: err });
+    } else {
+      console.log("getting data");
+    }
+  });
+
+  //res.send({ data: data2 });
 });
 
 app.listen(8000, function() {

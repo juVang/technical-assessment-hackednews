@@ -11,7 +11,7 @@ class TopTenStories extends React.Component {
             <tbody key={item.id}>
               <tr>
                 <td>{item.title}</td>
-                <td>{item.by.id}</td>
+                <td>{item.score}</td>
               </tr>
             </tbody>
           );

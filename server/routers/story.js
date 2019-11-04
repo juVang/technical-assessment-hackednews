@@ -7,7 +7,7 @@ var router = express.Router();
 
 router.route("/stories").get((req, res) => {
   console.log("iam here ");
-  res.send({ data: data }); //Part 1 Complete
+  res.send({ data: data });
 });
 
 // Here we use express's route params

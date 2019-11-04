@@ -2,9 +2,7 @@ var mongoose = require("mongoose");
 var request = require("request");
 var stories = require("./db/models/story");
 
-mongoose.connect("mongodb://localhost/hackednews", function(err) {
-  console.log("hi");
-});
+mongoose.connect("mongodb://localhost/hackednews", function(err) {});
 
 // In this file, build out a worker that will populate the database
 // with the data you need from the HackerNews API
@@ -32,32 +30,35 @@ var getJSONFromHackerNews = function(url, callback) {
   });
 };
 
-getJSONFromHackerNews(topStoriesURL, function(err, data) {
-  var arrOfStories = [];
-  if (err) {
-    console.log("errorAcured");
-  } else {
-    var url;
-    for (var i = 0; i <= 10; i++) {
-      console.log(data[i]);
-      url = `https://hacker-news.firebaseio.com/v0/item/${data[i]}.json?print=pretty`;
-      request.get(url, function(err, response, body) {
-        if (err) {
-          console.log(err);
-        } else {
-          var body2 = JSON.parse(body);
-          var d = {
-            id: parseInt(body2.id),
-            by: body2.id,
-            title: body2.title,
-            score: body2.score,
-            auther: body2.by
-          };
+var getLinks = function() {
+  getJSONFromHackerNews(topStoriesURL, function(err, data) {
+    var arrOfStories = [];
+    if (err) {
+      console.log("errorAcured");
+    } else {
+      var url;
+      for (var i = 0; i <= 10; i++) {
+        url = `https://hacker-news.firebaseio.com/v0/item/${data[i]}.json?print=pretty`;
+        request.get(url, function(err, response, body) {
+          if (err) {
+            console.log("worker error", err);
+          } else {
+            var body2 = JSON.parse(body);
+            var d = {
+              id: parseInt(body2.id),
+              by: body2.id,
+              title: body2.title,
+              score: body2.score,
+              auther: body2.by
+            };
 
-          stories.insertOne(d);
-        }
-      });
+            stories.insertOne(d);
+          }
+        });
+      }
     }
-  }
-  // mongoose.disconnect();
-});
+
+    // mongoose.disconnect();
+  });
+};
+exports.getLinks = getLinks;
