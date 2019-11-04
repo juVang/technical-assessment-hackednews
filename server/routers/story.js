@@ -3,9 +3,8 @@ var storyController = require('../../db/controllers/story.js');
 
 var router = express.Router();
 
-router.route('/')
-  .get(function(req, res) {
-     // TODO: Replace this with stories you've retrieved from the database
+router.get('/',function(req, res) {
+    //  TODO: Replace this with stories you've retrieved from the database
      res.json([
        {
          author: 'ocdtrekkie',
@@ -21,7 +20,7 @@ router.route('/')
   });
 
 // Here we use express's route params
-router.route('/:id')
-  .get(function(req, res) {});
+// router.route('/:id')
+//   .get(function(req, res) {});
 
 module.exports = router;

@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
-
+mongoose.connect('mongodb://localhost/tichAssess', {useNewUrlParser: true});
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {console.log("connected")});
 var storySchema = mongoose.Schema({
   id: {
     type: Number,
@@ -30,4 +33,5 @@ function insertOne(story, callback) {
 exports.findOne = findOne;
 exports.findAll = findAll;
 exports.insertOne = insertOne;
+exports.StoryModel = StoryModel;
 

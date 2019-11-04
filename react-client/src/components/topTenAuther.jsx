@@ -5,11 +5,11 @@ var fakedata = require('.../dummy_data')
 // Build out the view for the top ten HackerNews stories here. 
 // Each story should have a title, author, and score. 
 // You may wish to refactor the existing component structure - that's fine.
-class TopTen extends Component{
+class TopTenAuther extends Component{
   constructor(props){
     super(props); 
     this.state={
-    dat : []
+    dat = [],
     }
     $.ajax({
       url : '/',
@@ -18,9 +18,6 @@ class TopTen extends Component{
       success:(err,result)=>{
         if(err){
           console.log("Err in sending data");
-        }
-        for(var i = 0; i<StoryModel.length; i++){
-
         }
         console.log("Done!")
 
@@ -37,25 +34,18 @@ class TopTen extends Component{
 render(){
 return(
   <div>
-  <h1> Top Ten Stories </h1>
+  <h1> Top Ten Authors </h1>
   <table>
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Score</th>
+        <th>Name</th>
+        <th>Karma</th>
+        <th>About</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Switch – New Video Game System [video]</td>
-        <td>ocdtrekkie</td>
-        <td>536</td>
-      </tr>
-      <tr>
-        <td>Video Games Are Changing the Way Soccer Is Played</td>
-        <td>mhb</td>
-        <td>100</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -64,5 +54,5 @@ return(
 } 
 }
 
-ReactDOM.render(<TopTen/>,document.getElementById('app'))
+ReactDOM.render(<TopTenAuther/>,document.getElementById('app'))
 export default TopTen;
