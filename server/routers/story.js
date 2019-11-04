@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var storyController = require(path.join(__dirname, '../../db/models/story.js'));
 var bodyParser = require('body-parser');
-
+//var worker = require(path.join(__dirname, '../../worker.js'));
 var router = express.Router();
 
 router.use(bodyParser.json());
@@ -32,6 +32,13 @@ router.route('/authors')
 router.route('/searchStories').post(function (req, res) {
 
   var query = req.body.query;
+  // I need to get it from the api ???
+  // worker.searchByAuthorName(query, function (err, stories) {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  //   res.json(stories);
+  // });
   storyController.searchStories(query, function (err, stories) {
     if (err) {
       console.log(err);

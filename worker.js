@@ -16,6 +16,19 @@ var isJSONResponse = function (headers) {
   return headers['content-type'].includes('json');
 };
 
+var searchByAuthorNameFromHackerNews = function (url, callback) {
+  request.get(url, function (err, response, body) {
+    var data = null;
+    if (err) {
+      callback(err, null);
+    } else if (!isJSONResponse(response.headers)) {
+      callback(new Error('Response did not contain JSON data.'), null);
+    } else {
+      data = JSON.parse(body);
+      callback(null, data);
+    }
+  });
+};
 var getJSONFromHackerNews = function (url, callback) {
   request.get(url, function (err, response, body) {
     var data = null;
@@ -97,7 +110,10 @@ getJSONFromHackerNews(topStoriesURL, function (err, data) {
     console.log(err);
   } else {
     // save to database
-    var topTen = data.slice(0, 10);
-    saveToDb(topTen);
+    // var topTen = data.slice(0, 10);
+    // saveToDb(topTen);
+    saveToDb(data);
   }
 });
+
+

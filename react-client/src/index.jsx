@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import TopTen from './components/topTen.jsx';
 import TopTenAuthors from './components/topTenAuthors.jsx';
 import SearchAuthor from './components/searchAuthor.jsx';
+import RecommendeStories from './components/recommendeStories.jsx';
 import {
     BrowserRouter as Router,
     Switch,
@@ -17,7 +18,9 @@ class App extends React.Component {
         this.state = {
             component: 0,
             topTenStories: [],
-            topTenAuthors: []
+            topTenAuthors: [],
+            showRecommened: 0,
+            recommended: [],
         }
 
     }
@@ -55,6 +58,25 @@ class App extends React.Component {
             }
         });
     }
+    getRecommeded(id) {
+
+        var app = this;
+        $.ajax({
+            url: "/api/stories/recommeded",
+            type: 'POST',
+            data: { "id": id },
+            dataType: 'json',
+            success: function (data) {
+                app.setState({
+                    showRecommened: 0,
+                    recommended: data
+                })
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
 
     render() {
         return (
@@ -71,11 +93,14 @@ class App extends React.Component {
                             <li>
                                 <Link to="/searchAuthors">Search Authors</Link>
                             </li>
+                            <li>
+                                <Link to="/recommended">Recommeded Stroeis</Link>
+                            </li>
                         </ul>
                     </nav>
                     <Switch>
                         <Route exact path="/">
-                            <TopTen TenStoreis={this.getStories.bind(this)} data={this.state.topTenStories} />
+                            <TopTen whenItemClicked={this.getRecommeded.bind(this)} TenStoreis={this.getStories.bind(this)} data={this.state.topTenStories} />
                         </Route>
                         <Route exact path="/authors">
                             <TopTenAuthors data={this.state.topTenAuthors} TenAuthors={this.getAuthors.bind(this)} />
@@ -83,23 +108,13 @@ class App extends React.Component {
                         <Route exact path="/searchAuthors">
                             <SearchAuthor />
                         </Route>
+                        <Route exact path="/recommended">
+                            <RecommendeStories data={this.state.recommended} />
+                        </Route>
                     </Switch>
                 </div>
             </Router>
         )
-        // var currentComponent = <TopTen TenStoreis={this.getStories.bind(this)} data={this.state.topTenStories} />
-        // if (this.state.component === 1) {
-
-        //     currentComponent = <TopTenAuthors data={this.state.topTenAuthors} TenAuthors={this.getAuthors.bind(this)} />
-        // }
-        // return (
-        //     <div>
-        //         <a href="#" onClick={this.getStories.bind(this)}><h1> Top Ten Stories </h1></a>
-        //         <a href="#" onClick={this.getAuthors.bind(this)}><h1> Top Ten Authors </h1></a>
-        //         {currentComponent}
-        //     </div>
-        // );
-
     }
 }
 
