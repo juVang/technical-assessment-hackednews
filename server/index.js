@@ -19,7 +19,6 @@ app.use(express.static(__dirname + "/../react-client/dist"));
 
 //app.use("/api/story", storyRouter);
 app.get("/stories", (req, res) => {
-  console.log("iam here ");
   res.send({ data: data2 });
 });
 
