@@ -22,22 +22,36 @@ class TopTen extends React.Component
 // });
 // }
 handleClick() {
-  this.getdata();
- 
-}
-getdata(){
   var that = this;
   $.ajax({
       method:'GET',
-      url:'http://localhost:8000/api/story',
-      dataType:'json',
+      url:'http://localhost:8000/api/story/score',
       success:function(data){
-
         that.setState({
           stories:data
           });
           that.creatTable(data)
           console.log("data in client-side", Array.isArray(data));
+          console.log("data in client-side",(data));
+      },
+      error: function(err){
+          console.log("opps error",err)
+      }
+  });
+   event.preventDefault();
+}
+getdata(){
+  var that = this;
+  $.ajax({
+      method:'GET',
+      url:'http://localhost:8000/api/story/karma',
+      success:function(data){
+        that.setState({
+          stories:data
+          });
+          that.creatTable(data)
+          console.log("data in client-side", Array.isArray(data));
+          console.log("data in client-side",(data));
       },
       error: function(err){
           console.log("opps error",err)
@@ -45,7 +59,7 @@ getdata(){
   });
   
  //this.updateData()
-  event.preventDefault();
+ 
 }
 creatTable(storiesArr){
 storiesArr.map(story =>(
@@ -70,8 +84,8 @@ storiesArr.map(story =>(
   render(){
     return(
   <div>
-     <button onClick={this.handleClick}>TopTen</button>
-  
+     <button onClick={this.handleClick}>TopTen Score</button>
+     <button onClick={this.getdata}>TopTen Karma</button>
 </div>
 );
 }

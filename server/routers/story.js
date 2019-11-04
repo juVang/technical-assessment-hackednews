@@ -1,33 +1,41 @@
 var express = require("express");
 var storyController = require("../../db/models/story.js");
-var data = require("../../react-client/dummy_data.js");
+
+//var seedData = require("../../seed_data.js");
 var router = express.Router();
-// var stories = storyController.save(data, function(err) {
+// var stories = storyController.save(seedData, function(err) {
 //   if (err) {
 //     console.log(err, "errr");
 //   }
 // });
-router.route("/").get(function(req, res) {
-  // TODO: Replace this with stories you've retrieved from the database
+router.route("/score").get(function(req, res) {
+  //TODO: Replace this with stories you've retrieved from the database
   storyController.findAll(function(err, data) {
     // console.log(err, "err");
     if (err) {
       console.log("error !!");
     } else {
-      //console.log("data from before sort ", data);
-      for (let i = 0; i < data.length - 1; i++) {
-        if (data[i].score < data[i + 1].score) {
-          var temp = data[i].score;
-          data[i].score = data[i + 1].score;
-          data[i + 1].score = temp;
-        }
-      }
-      //console.log("data from after sort ", data);
+      data.sort(function(a, b) {
+        return b.score - a.score;
+      });
       res.json(data);
     }
   });
 });
-
+router.route("/karma").get(function(req, res) {
+  //TODO: Replace this with stories you've retrieved from the database
+  storyController.findAll(function(err, data) {
+    // console.log(err, "err");
+    if (err) {
+      console.log("error !!");
+    } else {
+      data.sort(function(a, b) {
+        return b.karma - a.karma;
+      });
+      res.json(data);
+    }
+  });
+});
 //[
 //   {
 //     author: "ocdtrekkie",

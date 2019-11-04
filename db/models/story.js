@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-
+var data = require("../../react-client/dummy_data.js");
 var storySchema = mongoose.Schema({
   id: {
     type: Number,
@@ -37,7 +37,11 @@ function findOne(id, callback) {
 function insertOne(story, callback) {
   StoryModel.create(story, callback);
 }
-
+// save(data, function(err) {
+//   if (err) {
+//     console.log(err, "errr");
+//   }
+// });
 exports.findOne = findOne;
 exports.findAll = findAll;
 exports.insertOne = insertOne;
