@@ -1,10 +1,7 @@
 var mongoose = require('mongoose');
 
 var storySchema = mongoose.Schema({
-  id: {
-    type: Number,
-    unique: true
-  },
+  id: {type: Number, unique: true},
   by: String,
   title: String,
   score: Number
@@ -27,7 +24,17 @@ function insertOne(story, callback) {
   StoryModel.create(story, callback);
 }
 
+ var saveStory = function(Stories) {
+  var nd = new story({
+     id : Stories.id,
+     by : Stories.by,
+    title : Stories.title,
+    score : Stories.score
+  })
+  nd.save(); 
+}  
+
 exports.findOne = findOne;
 exports.findAll = findAll;
 exports.insertOne = insertOne;
-
+exports.saveStory = saveStory;
