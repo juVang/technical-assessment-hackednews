@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+
 var storySchema = mongoose.Schema({
   id: {
     type: Number,
@@ -12,6 +13,29 @@ var storySchema = mongoose.Schema({
 
 var StoryModel = mongoose.model('Story', storySchema);
 
+ function save(story){
+   for (var i =0; i < story.length; i ++){
+   var type= story[i].type;
+   var unique= story[i].unique;
+   var by= story[i].by;
+   var title= story[i].title;
+   var score=story[i].score;
+   }
+var st = new StoryModel({ 
+  type : type ,
+  unique : unique ,
+  by : by ,
+  title : title ,
+  score : score
+})
+
+st.save();
+}
+ 
+
+function gettingData (){
+
+}
 // findAll retrieves all stories
 function findAll(callback) {
   StoryModel.find({}, callback);
@@ -30,4 +54,5 @@ function insertOne(story, callback) {
 exports.findOne = findOne;
 exports.findAll = findAll;
 exports.insertOne = insertOne;
+exports.save= save;
 
