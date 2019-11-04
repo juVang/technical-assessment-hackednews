@@ -29,6 +29,14 @@ router.route("/api/stories").get(function(req, res) {
     });
 });
 
+router.route("/api/authors").get(function(req, res) {
+    storyController.findTopTenAuthors(function(err, result) {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+});
 // router.route("/save").get(function(req, res) {
 //     //     var data = dummyData;
 //     //     // console.log(data[0]);

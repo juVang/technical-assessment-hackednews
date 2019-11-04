@@ -8,17 +8,36 @@ mongoose.connect("mongodb://localhost/hackednews");
 // score: Number
 var seedDb = function(data) {
     // your code here!
+    // data.forEach(item => {
+    //     var obj = {
+    //         id: item.id,
+    //         by: item.by.id,
+    //         title: item.title,
+    //         score: item.score
+    //     };
+    //     Stories.insertOne(obj, function(err, res) {
+    //         console.log(err);
+    //     });
+    // });
+
     data.forEach(item => {
         var obj = {
-            id: item.id,
-            by: item.by.id,
-            title: item.title,
-            score: item.score
+            id: item.by.created,
+            name: item.by.id,
+            about: item.by.about,
+            karma: item.by.karma
         };
         Stories.insertOne(obj, function(err, res) {
             console.log(err);
         });
     });
 };
-
-seedDb(data);
+// id: {
+//   type: Number,
+//   unique: true
+// },
+// name: String,
+// about: String,
+// karma: Number
+// });
+// seedDb(data);
