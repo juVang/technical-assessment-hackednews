@@ -30,6 +30,11 @@ router.route("/author").get(function(req, res) {
   });
 });
 
+router.route("/search").post(function(req, res) {
+  console.log(req.body);
+  res.end();
+});
+
 // Here we use express's route params
 router.route("/:id").get(function(req, res) {});
 

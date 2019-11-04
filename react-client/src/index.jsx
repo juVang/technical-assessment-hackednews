@@ -3,8 +3,9 @@ import ReactDOM from "react-dom";
 import { Component } from "react";
 import TopTen from "./components/topTen.jsx";
 import TopAuthors from "./components/TopAuthors.jsx";
+import AuthorSearch from "./components/AuthorSearch.jsx";
 import $ from "jquery";
-import dummy from "../dummy_data";
+// import dummy from "../dummy_data";
 
 class App extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class App extends Component {
       <div>
         <TopTen data={this.state.data} />
         <TopAuthors data1={this.state.data1} />
+        <AuthorSearch />
       </div>
     );
   }
