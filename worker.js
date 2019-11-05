@@ -4,7 +4,24 @@ var request = require('request');
 mongoose.connect('mongodb://localhost/hackednews');
 // In this file, build out a worker that will populate the database
 // with the data you need from the HackerNews API
+var hackSchema = new mongoose.Schema({
+  id: {
+    type: Number,
+    unique: true
+  },
+  by: String,
+  descendants: Number,
+  kids: [Number],
+  score:Number,
+  text:String,
+  time: Number,
+  title: String,
+  type: String,
+  url:""
+});
 
+var workersModel = mongoose.model('Worker', hackSchema);
+app.use("/api",router);
 
 // Here is an example of getting the top 500 stories from the API
 // and logging them to the console.
