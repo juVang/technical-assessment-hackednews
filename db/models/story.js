@@ -7,7 +7,9 @@ var storySchema = mongoose.Schema({
   },
   by: String,
   title: String,
-  score: Number
+  score: Number,
+  karma: String,
+  about: String
 });
 
 var StoryModel = mongoose.model('Story', storySchema);
@@ -27,7 +29,34 @@ function insertOne(story, callback) {
   StoryModel.create(story, callback);
 }
 
+function findAuthors(callback) {
+  StoryModel.find().sort({karma}).limit(10).exec(callback);
+}
+
+function findStoriesByAuthor(author) {
+  StoryModel.find({by:author}, callback);
+}
+
+function saveStory(story) {
+  var id = story.id;
+  var by = story.by.id;
+  var title = story.title;
+  var score = story.score;
+  var karma = story.by.karma;
+  var about = story.by.about; 
+  console.log(by);
+  var Story = new StoryModel({'id': id, 'by': by, 'title' : title, 'score' : score, 'karma' : karma, 'about' : about});
+  //StoryModel.remove({});
+  Story.save(function(err, myStory){
+    if(err) return console.log("err", err);
+    console.log(myStory, " saved to Stories Collection!!");
+  });
+}
+
 exports.findOne = findOne;
 exports.findAll = findAll;
 exports.insertOne = insertOne;
+exports.saveStory = saveStory;
+exports.findAuthors = findAuthors;
+exports.findStoriesByAuthor = findStoriesByAuthor;
 

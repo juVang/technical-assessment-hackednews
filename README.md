@@ -64,7 +64,10 @@ To implement this user story, you should:
 
 To implement this user and developer story, you should:
 
-* Build out `worker.js` to store the top stories and top authors it gets from the [HackerNews API](https://github.com/HackerNews/API) in MongoDB, using `db/models/story.js`. You will have to use the ids from your initial request to the API, in order to make additional API requests for stories, as well as use the author username to make additional API requests for author information. (*NOTE: A story's score is not directly related to its rank. You may confirm the current top 10 stories by going to [Hacker News](https://news.ycombinator.com/)*).
+* Build out `worker.js` to store the top stories and top authors it gets from the [HackerNews API](https://github.com/HackerNews/API) in MongoDB, 
+* using `db/models/story.js`. You will have to use the ids from your initial request to the API, in order to make additional API requests for stories, 
+* as well as use the author username to make additional API requests for author information. (*NOTE: A story's score is not directly related to its rank. 
+* You may confirm the current top 10 stories by going to [Hacker News](https://news.ycombinator.com/)*).
 * Add an additional npm script to the `package.json` so that a developer could run the worker.js file to populate the database instead of the seed.js script
 
 * **WHEN COMPLETE AND WORKING, make a commit that says `Part 3 Complete`**

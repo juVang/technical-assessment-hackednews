@@ -1,27 +1,38 @@
 var express = require('express');
-var storyController = require('../../db/controllers/story.js');
+var db = require('../../db/models/story.js');
+//var workerAPI = require('../../worker.js');
 
 var router = express.Router();
 
 router.route('/')
   .get(function(req, res) {
      // TODO: Replace this with stories you've retrieved from the database
-     res.json([
-       {
-         author: 'ocdtrekkie',
-         title: 'Switch – New Video Game System [video]',
-         score: 536
-       },
-       {
-         author: 'mhb',
-         title: 'Video Games Are Changing the Way Soccer Is Played',
-         score: 100
-       }
-     ]);
+     db.findAll(function(err, result){
+        if(err) {
+          console.log("db fetching err", err);
+        } else {
+          res.json(result);
+          //console.log("db data" ,result);
+        }
+     });    
   });
 
 // Here we use express's route params
 router.route('/:id')
   .get(function(req, res) {});
+
+router.route('/:author')
+  .get(function(req, res) {
+    var author = req.params.author;
+    console.log(author);
+    var authorStories = db.findStoriesByAuthor(author);
+  });
+
+  // router.route('/:author')
+  // .post(function(req, res) {
+  //   var author = req.body.name;
+  //   console.log(author);
+  //   var authorStories = db.findStoriesByAuthor(author);
+  // });
 
 module.exports = router;
