@@ -21,7 +21,7 @@ router.route('/')
   });
 
 // Here we use express's route params
-router.route('/:id')
+router.route('/api/stories')
   .get(function(req, res) {});
 
 module.exports = router;
