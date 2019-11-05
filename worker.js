@@ -1,27 +1,28 @@
-var mongoose = require('mongoose');
-var request = require('request');
+var mongoose = require("mongoose");
+var request = require("request");
+var stories = require("./db/models/story");
 
-mongoose.connect('mongodb://localhost/hackednews');
+mongoose.connect("mongodb://localhost/hackednews", function(err) {});
+
 // In this file, build out a worker that will populate the database
 // with the data you need from the HackerNews API
-
 
 // Here is an example of getting the top 500 stories from the API
 // and logging them to the console.
 // You are not required to use this code (though you may).
-var topStoriesURL = 'https://hacker-news.firebaseio.com/v0/topstories.json';
+var topStoriesURL = "https://hacker-news.firebaseio.com/v0/topstories.json";
 
 var isJSONResponse = function(headers) {
-  return headers['content-type'].includes('json');
+  return headers["content-type"].includes("json");
 };
 
-var getJSONFromHackerNews = function (url, callback) {
+var getJSONFromHackerNews = function(url, callback) {
   request.get(url, function(err, response, body) {
     var data = null;
     if (err) {
       callback(err, null);
     } else if (!isJSONResponse(response.headers)) {
-      callback(new Error('Response did not contain JSON data.'), null);
+      callback(new Error("Response did not contain JSON data."), null);
     } else {
       data = JSON.parse(body);
       callback(null, data);
@@ -29,8 +30,35 @@ var getJSONFromHackerNews = function (url, callback) {
   });
 };
 
-getJSONFromHackerNews(topStoriesURL, function(err, data) {
-  console.log(err, 'err, expect to be null');
-  console.log(data, 'data, expect to be ids for top 500 stories');
-  mongoose.disconnect();
-});
+var getLinks = function() {
+  getJSONFromHackerNews(topStoriesURL, function(err, data) {
+    var arrOfStories = [];
+    if (err) {
+      console.log("errorAcured");
+    } else {
+      var url;
+      for (var i = 0; i <= 10; i++) {
+        url = `https://hacker-news.firebaseio.com/v0/item/${data[i]}.json?print=pretty`;
+        request.get(url, function(err, response, body) {
+          if (err) {
+            console.log("worker error", err);
+          } else {
+            var body2 = JSON.parse(body);
+            var d = {
+              id: parseInt(body2.id),
+              by: body2.id,
+              title: body2.title,
+              score: body2.score,
+              auther: body2.by
+            };
+
+            stories.insertOne(d);
+          }
+        });
+      }
+    }
+
+    // mongoose.disconnect();
+  });
+};
+exports.getLinks = getLinks;
