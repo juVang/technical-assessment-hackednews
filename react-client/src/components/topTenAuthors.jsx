@@ -1,5 +1,6 @@
 import React from "react";
-export default class TopTen extends React.Component {
+
+export default class TopTenAuthors extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -8,13 +9,13 @@ export default class TopTen extends React.Component {
   render() {
     return (
       <div>
-        <h1> Top Ten Stories </h1>
+        <h1> Top Ten Authors </h1>
         <table>
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Score</th>
+              <th>Name</th>
+              <th>Karma</th>
+              <th>About</th>
             </tr>
           </thead>
           <tbody>
@@ -22,9 +23,9 @@ export default class TopTen extends React.Component {
               ? this.props.data.map((element, index) => {
                   return (
                     <tr key={index}>
-                      <td>{element["title"]}</td>
-                      <td>{element["by"]}</td>
-                      <td>{element["score"]}</td>
+                      <td>{element["name"]}</td>
+                      <td>{element["karma"]}</td>
+                      <td>{element["about"]}</td>
                     </tr>
                   );
                 })

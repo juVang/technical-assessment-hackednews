@@ -1,12 +1,10 @@
 var express = require("express");
-const storyDb = require("../../db/models/story");
-//var storyController = require('../../db/controllers/story.js');
+const authorDb = require("../../db/models/authors");
 
 var router = express.Router();
 
 router.route("/").get(function(req, res) {
-  // TODO: Replace this with stories you've retrieved from the database
-  storyDb.findAll(function(err, result) {
+  authorDb.findAll(function(err, result) {
     if (err) {
       res.status(500);
       res.end();
