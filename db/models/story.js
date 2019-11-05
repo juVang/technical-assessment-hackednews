@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+// var dataPath  = require('../seed_data.js');
 
 var storySchema = mongoose.Schema({
   id: {
@@ -25,6 +26,7 @@ function findOne(id, callback) {
 // insertOne inserts a story into the db
 function insertOne(story, callback) {
   StoryModel.create(story, callback);
+
 }
 
 exports.findOne = findOne;
