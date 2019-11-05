@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-
+var mongoose = require("mongoose");
+var data = require("../../react-client/dummy_data.js");
 var storySchema = mongoose.Schema({
   id: {
     type: Number,
@@ -10,8 +10,19 @@ var storySchema = mongoose.Schema({
   score: Number
 });
 
-var StoryModel = mongoose.model('Story', storySchema);
+var StoryModel = mongoose.model("Story", storySchema);
 
+function save(stories, callback) {
+  stories.forEach(story => {
+    var st = new StoryModel({
+      id: story.id,
+      by: story.by.id,
+      title: story.title,
+      score: story.score
+    });
+    insertOne(st, callback);
+  });
+}
 // findAll retrieves all stories
 function findAll(callback) {
   StoryModel.find({}, callback);
@@ -19,15 +30,19 @@ function findAll(callback) {
 
 // findOne will retrieve the story associated with the given id
 function findOne(id, callback) {
-  StoryModel.find({id: id}, callback);
+  StoryModel.find({ id: id }, callback);
 }
 
 // insertOne inserts a story into the db
 function insertOne(story, callback) {
   StoryModel.create(story, callback);
 }
-
+// save(data, function(err) {
+//   if (err) {
+//     console.log(err, "errr");
+//   }
+// });
 exports.findOne = findOne;
 exports.findAll = findAll;
 exports.insertOne = insertOne;
-
+exports.save = save;
