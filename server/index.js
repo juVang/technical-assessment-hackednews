@@ -10,7 +10,7 @@ mongoose.connect('mongodb://localhost/hackednews');
 app.use(bodyParser.json());
 
 // UNCOMMENT FOR REACT
-// app.use(express.static(__dirname + '/../react-client/dist'));
+app.use(express.static(__dirname + '/../react-client/dist'));
 
 // UNCOMMENT FOR ANGULAR
 // app.use(express.static(__dirname + '/../angular-client'));
@@ -18,6 +18,27 @@ app.use(bodyParser.json());
 
 app.use('/api/story', storyRouter);
 
+
+
+// app.get("/news", function (req, res) {   
+//   StoryModel.find({}, function (err, allDetails) {
+//       if (err) {
+//           console.log(err);
+//       } else {
+//           res.render("index", { details: allDetails })
+//       }
+//   })
+// }
+
+app.post('/TopTen', function(req,res){
+  var news = req.body.news;
+  console.log(news);
+})
+
+
+
 app.listen(8000, function() {
   console.log('listening on port 8000');
 });
+
+

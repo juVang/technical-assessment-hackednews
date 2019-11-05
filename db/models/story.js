@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 
 var storySchema = mongoose.Schema({
-  id: {
+  by: {
     type: Number,
     unique: true
   },
-  by: String,
+  'id': String,
   title: String,
   score: Number
 });
