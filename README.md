@@ -9,10 +9,10 @@
 You will be creating a full-stack application to display analytics about [HackerNews](https://news.ycombinator.com/) and its users. In order to do this you will be interacting with the [HackerNews API](https://github.com/HackerNews/API) using a worker process, and storing data from your calls to the API in MongoDB, using the [Mongoose ODM](http://mongoosejs.com/). Your front end will display views created from data in the database. You will have the choice of using either [AngularJS](https://angularjs.org/) or [ReactJS](https://facebook.github.io/react/), and will serve your application with a [NodeJS](https://nodejs.org/) web server, using [ExpressJS](https://expressjs.com/).
 
 NAME WHICH FRONT END FRAMEWORK YOU WILL BE USING FOR THE ASSESSMENT HERE:
-* *[AngularJS or ReactJS]*:
+* *[ReactJS]*:
 
 HOW TO START THIS APP
-* *[Modify this section to tell graders how to start your app]*
+* *[git data from API]*
 
 By design, this assessment contains more work than you will be able to complete in a day, so don't be concerned about not completing all of the features below. Rather, please work on the following features **in order**, moving on to the next feature only after the one you are working on is complete. **Please commit WORKING code early and often**. In addition, after each step, please follow the guidelines for a commit message.
 
@@ -35,7 +35,7 @@ To implement this user story, you should:
   * Start your application with two commands `npm start` and `npm run dev-react` in two separate terminal tabs. For more information about webpack, read the comments in `webpack.config.js` or take a look at [the Webpack Docs](https://webpack.github.io/docs/).
 * Write a script that would add the dummy data to your database when `npm run seed-database` is run from the command line. Check out the `package.json` file to see what this command does. When you have this working, run the command so that your database is populated.
 * Complete the route `/api/stories` in `server/routers/story.js` so that requests to this route are responded to with the data for the top ten stories, retrieved from the database.
-* Once you have your front end views working with the dummy data, refactor your front end to retrieve  seed data from the server rather than using the dummy data in the client side files.
+* Once you have your front end views working with the dummy data, refactor your front end to retrieve seed data from the server rather than using the dummy data in the client side files.
 * **WHEN COMPLETE AND WORKING, make a commit that says `Part 1 Complete`**
 
 ### Part 2 - Authors of Top Stories
