@@ -2,20 +2,16 @@ import React from "react";
 import TableRow from "./TableRow.jsx";
 import dumyData from "../../dummy_data.js";
 import $ from "jquery";
-
-// Build out the view for the top ten HackerNews stories here.
-// Each story should have a title, author, and score.
-// You may wish to refactor the existing component structure - that's fine.
-export default class TopTen extends React.Component {
+export default class TopTenAuth extends React.Component {
   constructor(props) {
     super(props);
     this.state = { data: [] };
   }
 
   componentDidMount() {
-    console.log("TopTen");
+    console.log("TopTenAuth");
     $.ajax({
-      url: "/api/story/",
+      url: "/api/story/top-auth",
       type: "GET",
       ContentType: "application/json",
       success: data => {
@@ -35,18 +31,18 @@ export default class TopTen extends React.Component {
         <table>
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Score</th>
+              <th>Name</th>
+              <th>Karma</th>
+              <th>about</th>
             </tr>
           </thead>
           <tbody>
             {this.state.data.map(elem => {
               return (
                 <TableRow
-                  param1={elem.title}
-                  param2={elem.by.id}
-                  param3={elem.score}
+                  param1={elem.id}
+                  param2={elem.karma}
+                  param3={elem.about}
                 />
               );
             })}
