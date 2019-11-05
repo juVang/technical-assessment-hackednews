@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/index.js",
     "dev-react": "webpack -d --watch",
-    "seed-database": "node seed.js"
+    "seed-database": "node seed.js",
+    "worker-db": "node worker.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,8 @@
     "mongoose": "^4.6.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.2.0",
     "request": "^2.75.0"
   },
   "devDependencies": {
